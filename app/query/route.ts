@@ -14,13 +14,21 @@ async function listInvoices() {
   return data;
 }
 
+async function getPosts() {
+  const jsonResponse = await fetch(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
+  const response = await jsonResponse.json();
+  return response;
+}
+
 export async function GET() {
   // return Response.json({
   //   message:
   //     'Uncomment this file and remove this line. You can delete this file when you are finished.',
   // });
   try {
-    return Response.json(await listInvoices());
+    return Response.json(await getPosts());
   } catch (error) {
     return Response.json({ error }, { status: 500 });
   }
